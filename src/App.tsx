@@ -33,7 +33,9 @@ function App() {
     <p>kerekparok szama: {kerekparok.length}</p>
     <p>legolcsobb kerékpár: {legolcsobbKerekpar}</p>
     <p>legdrágább kerékpár: {legdragabbKerekpar}</p>
+    <div style ={{display: "flex"}}>
     <KerekparLista kerekparok={kerekparok} />
+    </div>
     </>
   )
 }
