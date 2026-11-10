@@ -23,7 +23,6 @@ function App() {
   //     legdragabbKerekpar = kerekpar.napiDij
   //   }
   // }
-  
   console.log(kerekparok)
   return (
     <>
