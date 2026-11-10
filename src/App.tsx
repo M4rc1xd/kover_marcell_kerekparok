@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import type {Kerekpar} from './components/kerekpar'
+import "bootstrap/dist/css/bootstrap.min.css"
+import KerekparLista from './components/kerekparLista'
 
 function App() {
   const [kerekparok, setKerekparok] = useState<Kerekpar[]>([])
@@ -13,23 +15,25 @@ function App() {
     adatokBeolvasasa()
   }, [])
 
-  // let legolcsobbKerekpar = kerekparok[0].napiDij
-  // let legdragabbKerekpar = kerekparok[0].napiDij
-  // for (let kerekpar of kerekparok) {
-  //   if (kerekpar.napiDij < legolcsobbKerekpar) {
-  //     legolcsobbKerekpar = kerekpar.napiDij
-  //   }
-  //   if (kerekpar.napiDij > legdragabbKerekpar) {
-  //     legdragabbKerekpar = kerekpar.napiDij
-  //   }
-  // }
+  let legolcsobbKerekpar = kerekparok[0]?.napiDij
+  let legdragabbKerekpar = kerekparok[0]?.napiDij
+  for (let kerekpar of kerekparok) {
+    if (kerekpar.napiDij < legolcsobbKerekpar) {
+      legolcsobbKerekpar = kerekpar.napiDij
+    }
+    if (kerekpar.napiDij > legdragabbKerekpar) {
+      legdragabbKerekpar = kerekpar.napiDij
+    }
+  }
+  
   console.log(kerekparok)
   return (
     <>
     <h1>Kiadó kerékpárok</h1>
     <p>kerekparok szama: {kerekparok.length}</p>
-    {/* <p>legolcsobb kerékpár: {legolcsobbKerekpar}</p>
-    <p>legdrágább kerékpár: {legdragabbKerekpar}</p> */}
+    <p>legolcsobb kerékpár: {legolcsobbKerekpar}</p>
+    <p>legdrágább kerékpár: {legdragabbKerekpar}</p>
+    <KerekparLista kerekparok={kerekparok} />
     </>
   )
 }
